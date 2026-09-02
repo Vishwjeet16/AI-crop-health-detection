@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2D5F45"/>
+      <stop offset="100%" stop-color="#1B4332"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#leaf)"/>
+  <g opacity="0.5" stroke="#8FBF7B" stroke-width="2" fill="none">
+    <path d="M60,60 C300,20 500,20 740,60"/>
+    <path d="M60,540 C300,580 500,580 740,540"/>
+  </g>
+  <ellipse cx="400" cy="300" rx="230" ry="170" fill="#3A6B4F" opacity="0.6"/>
+  <path d="M400 130 C470 200 470 400 400 470 C330 400 330 200 400 130 Z" fill="#4C7A3F" opacity="0.85"/>
+  <circle cx="360" cy="260" r="18" fill="#6B4226" opacity="0.55"/>
+  <circle cx="430" cy="300" r="24" fill="#6B4226" opacity="0.5"/>
+  <circle cx="390" cy="350" r="14" fill="#6B4226" opacity="0.6"/>
+  <text x="400" y="580" text-anchor="middle" font-family="monospace" font-size="14" fill="#F2C879" opacity="0.7">
+    DEMO IMAGE — placeholder crop leaf, not a real scan
+  </text>
+</svg>

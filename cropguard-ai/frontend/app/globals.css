@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-bg text-ink font-sans antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display text-forest-dark;
+  }
+  :focus-visible {
+    outline: 2px solid #4C7A3F;
+    outline-offset: 2px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* Signature motif: viewfinder / scan-bracket corners, echoing the app's
+     core action — framing a crop for AI analysis. Used sparingly on hero
+     imagery, upload targets, and result frames. Never as pure decoration. */
+  .scan-frame {
+    position: relative;
+  }
+  .scan-frame::before,
+  .scan-frame::after,
+  .scan-frame > .corner-tl,
+  .scan-frame > .corner-br {
+    content: "";
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border-color: theme("colors.marigold.DEFAULT");
+    animation: bracket-in 0.5s ease-out;
+  }
+  .scan-frame::before {
+    top: -1px;
+    left: -1px;
+    border-top: 3px solid;
+    border-left: 3px solid;
+    border-top-left-radius: 6px;
+  }
+  .scan-frame::after {
+    bottom: -1px;
+    right: -1px;
+    border-bottom: 3px solid;
+    border-right: 3px solid;
+    border-bottom-right-radius: 6px;
+  }
+  .scan-frame > .corner-tl {
+    top: -1px;
+    right: -1px;
+    border-top: 3px solid;
+    border-right: 3px solid;
+    border-top-right-radius: 6px;
+  }
+  .scan-frame > .corner-br {
+    bottom: -1px;
+    left: -1px;
+    border-bottom: 3px solid;
+    border-left: 3px solid;
+    border-bottom-left-radius: 6px;
+  }
+
+  .card {
+    @apply bg-paper border border-line rounded-lg shadow-sm;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-md bg-growth px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-growth-dark disabled:opacity-50 disabled:pointer-events-none;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-md border border-forest px-5 py-3 text-sm font-semibold text-forest transition-colors hover:bg-forest hover:text-white disabled:opacity-50 disabled:pointer-events-none;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-medium text-ink-soft transition-colors hover:bg-bg-alt;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold;
+  }
+  .badge-healthy { @apply badge bg-growth-light/40 text-growth-dark; }
+  .badge-moderate { @apply badge bg-marigold-light/50 text-marigold-dark; }
+  .badge-high { @apply badge bg-rust-light/40 text-rust-dark; }
+
+  .eyebrow {
+    @apply font-mono text-xs uppercase tracking-[0.18em] text-growth-dark;
+  }
+}

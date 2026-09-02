@@ -1,0 +1,40 @@
+fastapi==0.111.0
+uvicorn[standard]==0.30.1
+pydantic==2.8.2
+pydantic-settings==2.3.4
+httpx==0.27.0
+python-multipart==0.0.9
+python-jose[cryptography]==3.3.0
+Pillow==10.4.0
+numpy==1.26.4
+
+# --- Database ---------------------------------------------------------------
+# MongoDB holds every application collection (users, fields, scans, alerts,
+# weather) and the scan images themselves in a GridFS bucket. See
+# app/services/mongo_client.py and app/services/storage_service.py.
+# Async driver, because every route in this app is `async def` — the blocking
+# pymongo client would stall the event loop under concurrent requests.
+# Installing this pulls pymongo>=4.9 as a transitive dependency.
+motor==3.6.0
+
+# --- AI assistant (POST /api/assistant/chat) --------------------------------
+# Official Anthropic SDK. Required for the multilingual crop assistant in
+# app/services/assistant_service.py. Without ANTHROPIC_API_KEY set, the
+# assistant endpoint returns a clear 503 and the rest of the app is unaffected.
+# 1.x is needed for adaptive thinking and the `fallbacks` parameter; it runs on
+# httpx2, which installs alongside the httpx pin above rather than clashing.
+anthropic==1.2.0
+
+# --- Tests ------------------------------------------------------------------
+pytest==8.3.2
+pytest-asyncio==0.23.8
+
+# --- ML stack (needed once you actually train/run a real model — Stage 6) ---
+# Commented out by default so `pip install -r requirements.txt` for
+# demo-mode-only development stays fast and lightweight. Uncomment before
+# running ml/training/train.py or setting AI_MODE=production.
+# torch==2.3.1              # or a CUDA-specific build — see pytorch.org/get-started
+# ultralytics==8.2.58
+# opencv-python-headless==4.10.0.84   # also required by severity_service.py's color segmentation (Stage 7)
+# pandas==2.2.2
+# scikit-learn==1.5.1

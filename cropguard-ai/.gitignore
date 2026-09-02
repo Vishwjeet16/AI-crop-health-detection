@@ -1,0 +1,27 @@
+# Env files — never commit real secrets
+.env
+.env.local
+.env.*.local
+frontend/.env.local
+backend/.env
+
+# Node
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+npm-debug.log*
+
+# Python
+backend/__pycache__/
+backend/**/__pycache__/
+backend/.venv/
+backend/*.pyc
+
+# ML artifacts
+ml/dataset/*
+!ml/dataset/.gitkeep
+*.pt
+*.onnx
+
+# OS
+.DS_Store
